@@ -4,6 +4,7 @@
   "description": "For viewing, commenting on, and rating ice hockey camps around the world.",
   "main": "app.js",
   "dependencies": {
+    "ejs-mate": "^3.0.0",
     "express": "^4.17.1"
   },
   "devDependencies": {},
