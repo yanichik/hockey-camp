@@ -5,6 +5,7 @@ const ejsMate = require('ejs-mate');  // includes layout, partial, & block templ
 const path = require('path');
 const port = process.env.PORT || 3000;  // port defined in .env file or localhost:3000
 const mongoose = require('mongoose');
+const Camp = require('./models/camp');
 /*END INCLUSIONS*/
 
 /*START MONGOOSE SETUP*/
@@ -32,9 +33,11 @@ app.use(express.static(path.join(__dirname, 'public')));  // sets default direct
 /*END USES*/
 
 /*START ROUTES*/
-app.get('/', (req, res, next)=>{
+app.get('/', async (req, res, next)=>{
 	// res.send('welcome camp seakers!');
-	res.render('home', {'camp': 'heartland hockey camps'});
+	const camps = await Camp.find({});
+	// console.log(camps);
+	res.render('home', {camps});
 })
 /*END ROUTES*/
 
