@@ -39,6 +39,11 @@ app.get('/', async (req, res, next)=>{
 	// console.log(camps);
 	res.render('home', {camps});
 })
+
+app.get('/camps', async(req, res, next) => {
+	const camps = await Camp.find({});
+	res.render('index', {camps});
+})
 /*END ROUTES*/
 
 /*START LISTEN @ ROUTER*/

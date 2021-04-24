@@ -11,11 +11,13 @@ mongoose.connect('mongodb://localhost/hockey-camp', {
 	useFindAndModify: false
 });
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+const db = mongoose.connection;  // db is object instance of the opened mongoose connection
+db.on('error', console.error.bind(console, 'connection error:'));  // sets event listener if "error" occurs
+db.once('open', function() {  // sets event listener if "open" occurs
 	console.log("Mongoose connected")
 });
+
+// db.emit('open');
 /*END MONGOOSE SETUP*/
 
 /*START INSERT ONE*/
@@ -34,19 +36,19 @@ const seedCamps = async () =>{
 		const newCamp = new Camp({pics: picsArray[i].pic});
 
 		/* THIS SAVE METHOD RETURNS "MongoError: Topology is closed, please connect" */
-/*		await newCamp.save(function(e, someCamp){
-			if(e) return console.log("Something went wrong :(" + e);
-			console.log(`Successfully added ${someCamp}`);
-		})*/
+		// await newCamp.save(function(e, someCamp){
+		// 	if(e) return console.log("Something went wrong :(" + e);
+		// 	console.log(`Successfully added ${someCamp}`);
+		// })
 
 		/* this save method works without fault */
 		await newCamp.save();
 	}
 }
-
 /* this close method works without fault */
 seedCamps().then(() => {
-	mongoose.connection.close();
+	// console.log(db);
+	db.close();
 })
 .catch(e => {console.log(e)})
 
