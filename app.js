@@ -36,12 +36,12 @@ app.use(express.static(path.join(__dirname, 'public')));  // sets default direct
 app.get('/', async (req, res, next)=>{
 	// res.send('welcome camp seakers!');
 	const camps = await Camp.find({});
-	// console.log(camps);
 	res.render('home', {camps});
 })
 
 app.get('/camps', async(req, res, next) => {
 	const camps = await Camp.find({});
+	// console.log(camps);
 	res.render('index', {camps});
 })
 /*END ROUTES*/

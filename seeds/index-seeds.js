@@ -36,10 +36,10 @@ const seedCamps = async () =>{
 		const newCamp = new Camp({pics: picsArray[i].pic});
 
 		/* THIS SAVE METHOD RETURNS "MongoError: Topology is closed, please connect" */
-		// await newCamp.save(function(e, someCamp){
-		// 	if(e) return console.log("Something went wrong :(" + e);
-		// 	console.log(`Successfully added ${someCamp}`);
-		// })
+		/*const saved = await newCamp.save(function(e, someCamp){
+			if(e) console.log("Something went wrong :(" + e);
+			else {console.log(`Successfully added ${someCamp}`)};
+		})*/
 
 		/* this save method works without fault */
 		await newCamp.save();
@@ -47,7 +47,6 @@ const seedCamps = async () =>{
 }
 /* this close method works without fault */
 seedCamps().then(() => {
-	// console.log(db);
 	db.close();
 })
 .catch(e => {console.log(e)})

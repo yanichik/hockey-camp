@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<title>Paginate</title>
+</head>
+<body>
+  <div class="card mb-3" style="width: 40em;">
+	  <div class="row align-items-center">
+	    <div class="col-8">
+	      <img src="" class="card-img-top" alt="...">
+	    </div>
+	    <div class="card-body col-4">
+	      <h5 class="card-title">Title</h5>
+	      <p class="card-text">Text</p>
+	      <a href="#" class="btn btn-primary">Show Camp</a>
+	    </div>
+	  </div>
+	</div>
+
+
+	<!-- Separate Popper and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+  <script>
+		const myData = [
+			{
+				name: 1,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 2,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 3,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 4,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 5,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 6,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 7,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 8,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 9,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 10,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 11,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 12,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 13,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 14,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			{
+				name: 15,
+				pic: "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80"
+			},
+			
+		]
+  	const len = myData.length;
+  	function setSrc(){
+  		const img = document.querySelector('img');
+  		// console.dir(img);
+  		img.setAttribute('src', "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80");
+  		
+  	}
+  	setSrc();
+  	const card =
+	// `<div class="card mb-3" style="width: 40rem;">
+		  `<div class="row align-items-center">
+		    <div class="col-8">
+		      <img src="" class="card-img-top" alt="...">
+		    </div>
+		    <div class="card-body col-4">
+		      <h5 class="card-title">Title</h5>
+		      <p class="card-text">Text</p>
+		      <a href="#" class="btn btn-primary">Show Camp</a>
+		    </div>
+		  </div>`
+	// </div>`;
+  	function build3(data, pg){
+			const body = document.querySelector('body');
+			const start = 3*(pg-1);
+			const end = 3*pg;
+			data.slice(start,end).forEach( (datum, ind) => {
+	  		const cardDiv = document.createElement('div');
+	  		cardDiv.className = 'card mb-3';
+	  		cardDiv.setAttribute('style', "width: 40em;")
+	  		cardDiv.setAttribute('id', datum.name)
+	  		cardDiv.innerHTML = card;
+	  		const img = cardDiv.querySelector('img');
+	  		const title = cardDiv.querySelector('.card-title');
+	  		title.innerText = datum.name;
+	  		img.setAttribute('src', datum.pic);
+	  		body.appendChild(cardDiv);
+  		})
+  	}
+  	build3(myData, 3);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
