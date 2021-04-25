@@ -7,6 +7,15 @@
 	<title>Paginate</title>
 </head>
 <body>
+	<nav aria-label="Page navigation example" class="fixed-top">
+	  <ul class="pagination justify-content-center">
+	    <li class="page-item"><a class="page-link" id="prev" href="#">Previous</a></li>
+	    <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+	    <li class="page-item"><a class="page-link" href="#">2</a></li>
+	    <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+	    <li class="page-item"><a class="page-link" id="next" href="#">Next</a></li>
+	  </ul>
+	</nav>
   <div class="card mb-3" style="width: 40em;">
 	  <div class="row align-items-center">
 	    <div class="col-8">
@@ -96,6 +105,9 @@
   		img.setAttribute('src', "https://images.unsplash.com/photo-1567066245518-4637afe6022e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2704&q=80");
   		
   	}
+  	let page = 1;
+  	const minPgs = 1;
+  	const maxPgs = Math.ceil(len/3);
   	setSrc();
   	const card =
 	// `<div class="card mb-3" style="width: 40rem;">
@@ -114,11 +126,15 @@
 			const body = document.querySelector('body');
 			const start = 3*(pg-1);
 			const end = 3*pg;
-			data.slice(start,end).forEach( (datum, ind) => {
+			// data.slice(start,end).forEach( (datum, ind) => {
+			data.forEach( (datum, ind) => {
 	  		const cardDiv = document.createElement('div');
 	  		cardDiv.className = 'card mb-3';
 	  		cardDiv.setAttribute('style', "width: 40em;")
-	  		cardDiv.setAttribute('id', datum.name)
+	  		// cardDiv.setAttribute('id', datum.name)
+	  		if(ind%3 === 0){
+	  			cardDiv.setAttribute('id', ind/3+1);
+	  		}
 	  		cardDiv.innerHTML = card;
 	  		const img = cardDiv.querySelector('img');
 	  		const title = cardDiv.querySelector('.card-title');
@@ -127,7 +143,24 @@
 	  		body.appendChild(cardDiv);
   		})
   	}
-  	build3(myData, 3);
+  	build3(myData, page);
+
+  	const prevNav = document.getElementById("prev");
+  	const nextNav = document.getElementById("next");
+  	prevNav.onclick = function prevPage(){
+  		if (page>minPgs) {
+  			page -= 1;
+  			prevNav.setAttribute('href', `#${page}`)
+  			console.log(page);
+  		}
+  	}
+  	nextNav.onclick = function nextPage(){
+  		if (page<maxPgs) {
+  			page += 1;
+  			nextNav.setAttribute('href', `#${page}`)
+  			console.log(page);
+  		}
+  	}
   </script>
 </body>
 </html>

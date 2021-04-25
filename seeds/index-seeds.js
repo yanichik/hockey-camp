@@ -36,10 +36,10 @@ const seedCamps = async () =>{
 		const newCamp = new Camp({pics: picsArray[i].pic});
 
 		/* THIS SAVE METHOD RETURNS "MongoError: Topology is closed, please connect" */
-		/*const saved = await newCamp.save(function(e, someCamp){
-			if(e) console.log("Something went wrong :(" + e);
-			else {console.log(`Successfully added ${someCamp}`)};
-		})*/
+		// await newCamp.save(function(e, someCamp){
+		// 	if(e) console.log("Something went wrong :(" + e);
+		// 	else {console.log(`Successfully added ${someCamp}`)};
+		// })
 
 		/* this save method works without fault */
 		await newCamp.save();
@@ -50,6 +50,9 @@ seedCamps().then(() => {
 	db.close();
 })
 .catch(e => {console.log(e)})
+
+// seedCamps()
+
 
 /* THIS DISCONNECT METHOD RETURNS "TypeError: mongoose.connection.disconnect is not a function" */
 // seedCamps().then(() => {
