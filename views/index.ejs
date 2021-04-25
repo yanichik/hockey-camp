@@ -11,6 +11,17 @@
     <title>Hockey Camp Index</title>
   </head>
   <body>
+    <nav aria-label="Page navigation example" class="fixed-top">
+      <ul class="pagination justify-content-center">
+        <li class="page-item"><a class="page-link" id="prev" href="#">Previous</a></li>
+        <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+        <li class="page-item"><a class="page-link" id="next" href="#">Next</a></li>
+      </ul>
+    </nav>
+    <div class="container-fluid" id="top-level-container"></div>
+    <% /* %>
     <% for(camp of camps) {%>
       <div class="card mb-3" style="width: 40rem;">
         <div class="row align-items-center">
@@ -25,16 +36,74 @@
         </div>
       </div>
     <% } %>
+    <% */ %>
+
+
     <!-- Separate Popper and Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    
-
 
     <script>
       const pgs = Math.ceil(`<%=camps.length%>`/3);
-      
-      console.log(`<%=camps[0].pics[0]%>`);
+      <% /* %>
+        console.log(`<%=camps[0].pics%>`);
+      <% */ %>
+
+      const myCamps = <%-JSON.stringify(camps)%>;
+      let len = myCamps.length;
+      let page = 1;
+      const minPgs = 1;
+      const maxPgs = Math.ceil(len/3);
+      const card =
+        `<div class="row align-items-center">
+          <div class="col-8">
+            <img src="" class="card-img-top" alt="...">
+          </div>
+          <div class="card-body col-4">
+            <h5 class="card-title">Title</h5>
+            <p class="card-text">Text</p>
+            <a href="#" class="btn btn-primary">Show Camp</a>
+          </div>
+        </div>`
+      function build3(data, pg){
+        const topContainer = document.querySelector('#top-level-container');
+        const start = 3*(pg-1);
+        const end = 3*pg;
+        // data.slice(start,end).forEach( (datum, ind) => {
+        data.forEach( (datum, ind) => {
+          const cardDiv = document.createElement('div');
+          cardDiv.className = 'card mb-3';
+          cardDiv.setAttribute('style', "width: 40em;")
+          // cardDiv.setAttribute('id', datum.name)
+          if(ind%3 === 0){
+            cardDiv.setAttribute('id', ind/3+1);
+          }
+          cardDiv.innerHTML = card;
+          const img = cardDiv.querySelector('img');
+          const title = cardDiv.querySelector('.card-title');
+          title.innerText = datum.name;
+          img.setAttribute('src', datum.pics[0]);
+          topContainer.appendChild(cardDiv);
+        })
+      }
+      build3(myCamps, page);
+
+      const prevNav = document.getElementById("prev");
+      const nextNav = document.getElementById("next");
+      prevNav.onclick = function prevPage(){
+        if (page>minPgs) {
+          page -= 1;
+          prevNav.setAttribute('href', `#${page}`)
+          console.log(page);
+        }
+      }
+      nextNav.onclick = function nextPage(){
+        if (page<maxPgs) {
+          page += 1;
+          nextNav.setAttribute('href', `#${page}`)
+          console.log(page);
+        }
+      }
     </script>
   </body>
 </html>

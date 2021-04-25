@@ -31,9 +31,10 @@ db.once('open', function() {  // sets event listener if "open" occurs
 
 /*START SEED*/
 const seedCamps = async () =>{
+	await Camp.deleteMany({});
 	const picsSize = picsArray.length;
 	for (let i = 0; i < picsSize; i++){
-		const newCamp = new Camp({pics: picsArray[i].pic});
+		const newCamp = new Camp({pics: picsArray[i].pic, name: picsArray[i].name});
 
 		/* THIS SAVE METHOD RETURNS "MongoError: Topology is closed, please connect" */
 		// await newCamp.save(function(e, someCamp){
