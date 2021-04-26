@@ -30,6 +30,8 @@ app.set('views', path.join(__dirname, 'views'));  // sets default directory for 
 
 /*START USES*/
 app.use(express.static(path.join(__dirname, 'public')));  // sets default directory 'public' to serve all static assets
+app.use(express.urlencoded({extended: true}));	//
+// app.use(express.json());
 /*END USES*/
 
 /*START ROUTES*/
@@ -43,6 +45,15 @@ app.get('/camps', async(req, res, next) => {
 	const camps = await Camp.find({});
 	// console.log(camps);
 	res.render('index', {camps});
+})
+
+app.get('/register', async(req, res, next) => {
+	res.render('users/register');
+})
+
+app.post('/register', async(req, res, next) => {
+	console.log(req.body);
+	res.send(req.body);
 })
 /*END ROUTES*/
 

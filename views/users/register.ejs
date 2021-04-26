@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	<title>Register</title>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-secondary">
+    <div class="container-fluid">
+      <a href="/" class="navbar-brand">
+        <img width="40" height="40" src="https://static.wikia.nocookie.net/logopedia/images/1/18/National_hockey_league-primary-1918.svg/revision/latest?cb=20200518132603" alt="" class="d-inline-block align-text-center">
+        HOME
+      </a>
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
+        <!-- <ul class="navbar-nav"> -->
+            <div class="d-flex d-inline-block">
+            <a class="nav-link text-dark active" aria-current="page" href="/camps">Index</a>
+            <a class="nav-link text-dark" href="#">About</a>
+            <!-- <a class="nav-link text-dark" href="#">Login</a> -->
+            <!-- <a class="nav-link text-dark" href="#">Logout</a> -->
+            <a class="nav-link text-dark" href="#">Register</a>
+            </div>
+        <!-- </ul> -->
+      <!-- </div> -->
+    </div>
+  </nav>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-6 offset-3">
+				<form action="/register" method="POST">
+				  <div class="row mb-3">
+				    <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
+				    <div class="col-sm-4">
+				      <input type="text" class="form-control" id="firstName" name="firstName" autofocus>
+				    </div>				    
+				    <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
+				    <div class="col-sm-4">
+				      <input type="text" class="form-control" id="lastName" name="lastName">
+				    </div>
+				  </div>
+				  <div class="row mb-3">
+				    <label for="email" class="col-sm-2 col-form-label">Email</label>
+				    <div class="col-sm-4">
+				      <input type="email" class="form-control" id="email" name="email">
+				    </div>				    
+				    <label for="password" class="col-sm-2 col-form-label">Password</label>
+				    <div class="col-sm-4">
+				      <input type="password" class="form-control" id="password" name="password">
+				    </div>
+				  </div>
+				  <div class="row mb-3">
+				    <label for="username" class="col-sm-4 col-form-label">Choose Username</label>
+				    <div class="col-sm-8">
+				      <input type="text" class="form-control" id="username" name="username">
+				    </div>
+				  </div>
+				  <div class="d-grid">
+				  	<button type="submit" class="btn btn-primary">Register</button>
+			  	</div>
+				</form>
+			</div>	
+		</div>	
+	</div>
+
+
+  <!-- Separate Popper and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+</body>
+</html>

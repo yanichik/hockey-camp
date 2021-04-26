@@ -37,13 +37,13 @@ const seedCamps = async () =>{
 		const newCamp = new Camp({pics: picsArray[i].pic, name: picsArray[i].name});
 
 		/* THIS SAVE METHOD RETURNS "MongoError: Topology is closed, please connect" */
-		// await newCamp.save(function(e, someCamp){
-		// 	if(e) console.log("Something went wrong :(" + e);
-		// 	else {console.log(`Successfully added ${someCamp}`)};
-		// })
+		await newCamp.save(function(e, someCamp){
+			if(e) console.log("Something went wrong :(" + e);
+			else {console.log(`Successfully added ${someCamp}`)};
+		}).then()
 
 		/* this save method works without fault */
-		await newCamp.save();
+		// await newCamp.save();
 	}
 }
 /* this close method works without fault */
